@@ -1,0 +1,118 @@
+<div ng-controller="DetailsCtrl as project" layout="column" flex>
+	{{project.setPrintQueryType(0)}}
+	
+	<div class="div-header">
+	</div>
+
+	<div class="div-body" flex layout="column">
+		<md-grid-list
+		md-cols-xs="1" md-cols-sm="1" md-cols-md="1" md-cols-gt-md="1"
+		md-row-height-xs="7:1" md-row-height-sm="7:1" md-row-height-md="7:1" md-row-height-gt-md="7:1"
+		md-gutter="2px" md-gutter-gt-sm="2px"
+		layout-align="center center">
+
+			<md-grid-tile>
+				<md-grid-tile-header class="main-tile-header" layout-align="start center">
+
+					<div layout="row" layout-align="center center">
+						<md-card-title-media>
+							<img ng-src="default_logo.png" height="120px">
+						</md-card-title-media>
+						<div layout="column" class="content-less-padding">
+							<span class="md-display-3">{{project.selectedProject.title}}</span>
+							<div layout="row" layout-align="start center">
+							<md-subheader>
+								<md-button class="md-icon-button colored-text" ng-href="mailto:email@hpe.com">
+									<i class="material-icons">email</i>
+								</md-button>
+							</md-subheader>
+								<span class="md-title">{{project.selectedProject.project_x0020_manager || "Automation Team"}}</span>
+							</div>
+						</div>
+						<div layout="column" class="content-less-padding">
+							<md-subheader>
+								<i class="material-icons colored-text">arrow_upward</i>
+								<span class="md-title">
+									{{project.selectedProject.estimated_x0020_fte_x0020_saving | number:2}}
+									{{project.selectedProject.job_x0020_level}}
+								</span>
+							</md-subheader>
+							<md-subheader>
+								<i class="material-icons colored-text">category</i>
+								<span class="md-title">
+									{{project.selectedProject.automation_x0020_category || "No Category Yet"}}
+								</span>
+							</md-subheader>
+							<md-subheader>
+								<i class="material-icons colored-text">star</i>
+								<span class="md-title">
+									{{project.selectedProject.rsat || "No Rating Yet" | number:2}}
+								</span>
+							</md-subheader>
+						</div>
+					</div>
+				</md-grid-tile-header>
+		</md-grid-list>
+	</div>
+
+	<div ng-controller="AllBusinessCaseCtrl as businessCase" class="div-body" flex layout="column">
+		<span class="md-display-1 content-less-margin colored-text">Business Case</span>
+
+		<md-grid-list
+		md-cols-xs="1" md-cols-sm="1" md-cols-md="1" md-cols-gt-md="3"
+		md-row-height-xs="1:2" md-row-height-sm="3:2" md-row-height-md="3:2" md-row-height-gt-md="4:3"
+		md-gutter="24px" md-gutter-gt-sm="16px"
+		layout-align="center center"
+		class="content-less-margin">
+		
+
+			<md-grid-tile ng-repeat="item in businessCase.summaryColumns" class="bordered-tile">
+				<md-grid-tile-header class="content-less-padding summary-tile-header highlighted-tile">
+					<span class="md-display-1">{{item.title}}</span>
+				</md-grid-tile-header>
+				<md-grid-tile-footer class="content-less-padding summary-tile-footer" layout-align="start">
+					<ul ng-repeat="content in item.contents">
+						<li>{{content}}</li>
+					</ul>	
+				</md-grid-tile-footer>
+			</md-grid-tile>
+		</md-grid-list>
+
+		<span class="md-display-1 content-less-margin colored-text">Case Studies</span>
+
+		<md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="2" md-cols-gt-md="4"
+			md-row-height-xs="1:2" md-row-height-sm="2:3" md-row-height-md="5:4" md-row-height-gt-md="5:4"
+			md-gutter="24px" md-gutter-gt-sm="16px"
+			layout-align="center center"
+			class="content-less-margin">
+
+			<md-grid-tile class="bordered-tile" ng-repeat="caseStudy in businessCase.allCaseStudies">
+				<md-grid-tile-header class="content-less-padding case-tile-header other-tile">
+					<div flex layout="column">
+						<span class="md-display-1 content-less-padding colored-text">{{caseStudy.title}}</span>
+						<span>
+							<i class="material-icons">description</i>
+							{{caseStudy.details}}
+						</span>
+						<span ng-repeat="engineer in caseStudy.engineers" class="md-caption">
+							<i class="material-icons">person_outline</i>
+							{{engineer}}
+						</span>
+						<span class="md-caption">
+							<i class="material-icons">person</i>
+							{{caseStudy.projectManager}}
+						</span>
+					</div>
+				</md-grid-tile-header>
+				<md-grid-tile-footer class="case-tile-footer" layout-align="end center">
+					<md-button class="md-flat" href="/#/project/{{project.selectedProject.title}}/caseStudy/{{caseStudy.id}}"> <b>LEARN MORE...</b></md-button>
+				</md-grid-tile-footer>
+			</md-grid-tile>
+		</md-grid-list>
+	</div>
+
+	<md-button ng-click="project.showPricing()" class="md-raised md-primary md-hue1 md-display-1" aria-label="a">
+		Pricing
+		<span><i class="material-icons">attach_money</i></span>
+	</md-button>
+</div>

@@ -1,0 +1,138 @@
+<div ng-controller="DetailsCtrl as project" layout="column" flex>
+
+	<div class="div-header content-more-padding">
+		<md-button class="md-primary md-hue-1" ng-click="project.back()">
+			<i class="material-icons">arrow_back</i>
+			Return to Project Page
+		</md-button>
+	</div>
+
+	<div class="div-body" flex layout="column">
+		<md-grid-list
+		md-cols-xs="1" md-cols-sm="1" md-cols-md="1" md-cols-gt-md="1"
+		md-row-height-xs="7:1" md-row-height-sm="7:1" md-row-height-md="7:1" md-row-height-gt-md="7:1"
+		md-gutter="2px" md-gutter-gt-sm="2px"
+		layout-align="center center">
+
+			<md-grid-tile>
+				<md-grid-tile-header class="main-tile-header" layout-align="start center">
+
+					<div layout="row" layout-align="center center">
+						<md-card-title-media>
+							<img ng-src="default_logo.png" height="120px">
+						</md-card-title-media>
+						<div layout="column" class="content-less-padding">
+							<span class="md-display-3">{{project.selectedProject.title}}</span>
+							<div layout="row" layout-align="start center">
+							<md-subheader>
+								<md-button class="md-icon-button colored-text" ng-href="mailto:email@hpe.com">
+									<i class="material-icons">email</i>
+								</md-button>
+							</md-subheader>
+								<span class="md-title">{{project.selectedProject.project_x0020_manager || "Automation Team"}}</span>
+							</div>
+						</div>
+						<div layout="column" class="content-less-padding">
+							<md-subheader>
+								<i class="material-icons colored-text">arrow_upward</i>
+								<span class="md-title">
+									{{project.selectedProject.estimated_x0020_fte_x0020_saving | number:2}}
+									{{project.selectedProject.job_x0020_level}}
+								</span>
+							</md-subheader>
+							<md-subheader>
+								<i class="material-icons colored-text">category</i>
+								<span class="md-title">
+									{{project.selectedProject.automation_x0020_category || "No Category Yet"}}
+								</span>
+							</md-subheader>
+							<md-subheader>
+								<i class="material-icons colored-text">star</i>
+								<span class="md-title">
+									{{project.selectedProject.rsat || "No Rating Yet" | number:2}}
+								</span>
+							</md-subheader>
+						</div>
+					</div>
+				</md-grid-tile-header>
+		</md-grid-list>
+	</div>
+
+	<div ng-controller="CaseStudyCtrl as caseStudyCtrl" class="div-body content-more-padding" flex layout="column">
+		{{project.setPrintQueryType(1, caseStudyCtrl.index, caseStudyCtrl.selectedCaseStudyName)}}
+		<md-grid-list
+			md-cols-xs="1" md-cols-sm="1" md-cols-md="1" md-cols-gt-md="1"
+			md-row-height-xs="1:2" md-row-height-sm="1:1" md-row-height-md="5:6" md-row-height-gt-md="5:3"
+			md-gutter="24px" md-gutter-gt-sm="16px"
+			layout-align="center center"
+			class="content-less-margin">
+			<md-grid-tile class="bordered-tile">
+				<md-grid-tile-header class="content-less-padding pricing-tile-header highlighted-tile">
+					<span class="md-display-1">{{caseStudyCtrl.selectedCaseStudy.title}}</span>
+				</md-grid-tile-header>
+
+				<md-grid-tile-footer class="pricing-tile-footer">
+					<md-content flex layout="column">
+						<div class="content-less-padding" layout="column">
+							<md-subheader class="colored-text">Teams Involved:</md-subheader>
+							<ul ng-repeat="team in caseStudyCtrl.selectedCaseStudy.teamsInvolved" class="no-margin">
+								<li>{{team}}</li>
+							</ul>	
+						</div>
+						<div class="content-less-padding" layout="column">
+							<md-subheader class="colored-text">Teams Involved:</md-subheader>
+							<ul ng-repeat="savings in caseStudyCtrl.selectedCaseStudy.savings" class="no-margin">
+								<li>{{savings}}</li>
+							</ul>	
+						</div>
+						<div class="content-less-padding" layout="column">
+							<md-subheader class="colored-text">Teams Involved:</md-subheader>
+							<ul ng-repeat="benefit in caseStudyCtrl.selectedCaseStudy.benefits" class="no-margin">
+								<li>{{benefit}}</li>
+							</ul>	
+						</div>
+						<div class="content-less-padding" layout="column">
+							<md-subheader class="colored-text">Teams Involved:</md-subheader>
+							<ul ng-repeat="feature in caseStudyCtrl.selectedCaseStudy.features" class="no-margin">
+								<li>{{feature}}</li>
+							</ul>	
+						</div>
+					</md-content>
+				</md-grid-tile-footer>
+			</md-grid-tile>
+		</md-grid-list>
+		
+		<span class="md-headline content-less-margin colored-text">Other Case Studies</span>
+
+		<md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="2" md-cols-gt-md="4"
+			md-row-height-xs="1:2" md-row-height-sm="2:3" md-row-height-md="5:4" md-row-height-gt-md="5:4"
+			md-gutter="24px" md-gutter-gt-sm="16px"
+			layout-align="center center"
+			class="content-less-margin">
+			<md-grid-tile class="bordered-tile" ng-repeat="caseStudy in caseStudyCtrl.otherCaseStudies">
+				<md-grid-tile-header class="content-less-padding case-tile-header other-tile">
+					<div flex layout="column">
+						<span class="md-display-1 content-less-padding colored-text">{{caseStudy.title}}</span>
+						<span>
+							<i class="material-icons">description</i>
+							{{caseStudy.details}}
+						</span>
+						<span ng-repeat="engineer in caseStudy.engineers" class="md-caption">
+							<i class="material-icons">person_outline</i>
+							{{engineer}}
+						</span>
+						<span class="md-caption">
+							<i class="material-icons">person</i>
+							{{caseStudy.projectManager}}
+						</span>
+					</div>
+				</md-grid-tile-header>
+				<md-grid-tile-footer class="case-tile-footer" layout-align="end center">
+					<md-button class="md-flat" href="/#/project/{{project.selectedProject.title}}/caseStudy/{{caseStudy.id}}"><b> LEARN MORE...</b></md-button>
+				</md-grid-tile-footer>
+
+			</md-grid-tile>
+		</md-grid-list>
+	</div>
+
+</div>

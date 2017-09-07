@@ -1,0 +1,26 @@
+<div ng-controller="FeaturedCtrl as featured" layout="column" class="content-more-padding">
+	<div class="div-header">
+
+	</div>
+	<div class="div-body">
+		<md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="4"
+			md-row-height-gt-md="1:1" md-row-height="2:2"
+			md-gutter="24px" md-gutter-gt-sm="16px"
+			layout-align="center center">
+
+			<md-grid-tile ng-repeat="item in featured.featuredProjects" class="bordered-tile" style="background-image:url('default_logo.png');">
+				<md-grid-tile-header class="content-less-padding solid-tile-part">
+					<span class="md-title">App Name</span>
+				</md-grid-tile-header>
+				<md-button href="/#/project/{{item.appName}}" layout-fill></md-button>
+				<md-grid-tile-footer class="transparent-tile-part content-less-padding md-subhead" layout-align="end center">
+					<i class="material-icons">star</i>
+					<b>5</b>
+				</md-grid-tile-footer>
+			</md-grid-tile>
+		</md-grid-list>
+	</div>
+	<div class="div-footer content-more-padding">
+		<span class="md-title">Footer</span>
+	</div>
+</div>

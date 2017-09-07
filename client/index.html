@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="../../favicon.ico">
+
+		<link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+		<link rel="stylesheet" href="bower_components/material-design-lite/material.min.css">
+		<link rel="stylesheet" href="css/custom-css.css">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+		<link href="HPSimplified_Lt.ttf" rel="application/x-font-woff">
+    <title>Automation CoE</title>
+
+	</head>
+
+  <body ng-app="ACOEPortfolio">
+		<div ng-controller="SideNavCtrl as sidenav">
+			<md-toolbar layout="row">
+				<span class="md-toolbar-tools" href="/#/">
+					<i class="material-icons icon-right-margin" ng-mouseover="sidenav.toggleLeft(left)">
+						menu
+					</i>
+				</span>
+				<span class="md-toolbar-tools" layout-align="center center">
+					<a href = "/#/" class="md-display-1">Automation CoE</a>
+				</span>
+				<span class="md-toolbar-tools" layout-align="end center">
+					<i class="material-icons">search</i>
+					<md-menu-bar ng-controller="ToolbarCtrl as toolbar">
+						<md-menu>
+							<md-list-item ng-click="$mdOpenMenu()" layout-align="center center">
+								<i class="material-icons">more_vert</i>
+							</md-list-item>
+							<md-menu-content width="4">
+								<md-menu-item>
+									<md-list-item ng-click="toolbar.inProgress($event)" layout-align="center center">
+										<i class="material-icons icon-right-margin colored-text">account_circle</i>
+										<span class="md-title">Login</span>
+									</md-list-item>
+								</md-menu-item>
+								<md-menu-item>
+									<md-list-item ng-disabled="toolbar.isDisabled()" ng-click="toolbar.saveAsImage($event)" layout-align="center center">
+										<i class="material-icons icon-right-margin colored-text">save</i>
+										<span class="md-title">Save as image</span>
+									</md-list-item>
+								</md-menu-item>
+						</md-menu>
+					</md-menu-bar>
+				</span>
+			</md-toolbar>
+
+			<md-sidenav ng-click="sidenav.toggleLeft()" md-component-id="left" class="md-whiteframe-z2" >
+				<md-toolbar>
+					<span class="md-toolbar-tools"><i class="material-icons icon-right-margin">category</i>Categories</span>
+				</md-toolbar>
+				<md-list flex>
+					
+					<md-list-item href = "/#/" layout-align="center center">
+						<i class="material-icons icon-right-margin colored-text">home</i>
+						<span class="md-title">Home</span>
+					</md-list-item>
+					<md-list-item href = "/#/" layout-align="center center">
+						<i class="material-icons icon-right-margin colored-text">whatshot</i>
+						<span class="md-title">Featured</span>
+					</md-list-item>
+					<md-list-item ng-repeat="category in sidenav.categoryConfig" href = "/#/project/category/{{category.id}}" layout-align="center center">
+						<i class="material-icons icon-right-margin colored-text">{{category.icon}}</i>
+						<span class="md-title">
+							{{category.name}}
+						</span>
+					</md-list-item>
+					<md-list-item href = "/#/project/all" layout-align="center center">
+						<i class="material-icons icon-right-margin colored-text">list</i>
+						<span class="md-title">All Projects</span>
+					</md-list-item>
+				</md-list>
+			</md-sidenav>
+		</div>
+
+		<div ng-view class="wrapper">
+
+		</div>
+
+	</body>
+
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript" src="bower_components/angular/angular.js"> </script>
+	<script type="text/javascript" src="bower_components/angular-route/angular-route.js"> </script>
+	<script type="text/javascript" src="bower_components/angular-material/angular-material.js"> </script>
+	<script type="text/javascript" src="bower_components/angular-messages/angular-messages.js"> </script>
+	<script type="text/javascript" src="bower_components/angular-aria/angular-aria.js"> </script>
+	<script type="text/javascript" src="bower_components/angular-animate/angular-animate.js"> </script>
+	<script type="text/javascript" src="bower_components/material-design-lite/material.min.js"> </script>
+
+	<script type="text/javascript" src="app.js"> </script>
+
+	<script type="text/javascript" src="controller/side-nav-controller.js"> </script>
+	<script type="text/javascript" src="controller/toolbar-controller.js"> </script>
+
+	<script type="text/javascript" src="controller/project-controller.js"> </script>
+	<script type="text/javascript" src="controller/business-case-controller.js"> </script>
+	<script type="text/javascript" src="controller/case-study-controller.js"> </script>
+	<script type="text/javascript" src="controller/pricing-controller.js"> </script>
+
+	<script type="text/javascript" src="service/project-service.js"> </script>
+	<script type="text/javascript" src="service/cache-service.js"> </script>
+
+</html>

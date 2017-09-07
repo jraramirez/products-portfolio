@@ -1,0 +1,116 @@
+<div ng-controller="DetailsCtrl as project" layout="column" flex>
+	{{project.setPrintQueryType(2)}}
+
+	<div class="div-header">
+		<md-button class="md-primary md-hue-1" ng-click="project.back()">
+			<i class="material-icons">arrow_back</i>
+			Return to Project Page
+		</md-button>
+	</div>
+
+	<div class="div-body" flex layout="column">
+		<md-grid-list
+		md-cols-xs="1" md-cols-sm="1" md-cols-md="1" md-cols-gt-md="1"
+		md-row-height-xs="7:1" md-row-height-sm="7:1" md-row-height-md="7:1" md-row-height-gt-md="7:1"
+		md-gutter="2px" md-gutter-gt-sm="2px"
+		layout-align="center center">
+
+			<md-grid-tile>
+				<md-grid-tile-header class="main-tile-header" layout-align="start center">
+
+					<div layout="row" layout-align="center center">
+						<md-card-title-media>
+							<img ng-src="default_logo.png" height="120px">
+						</md-card-title-media>
+						<div layout="column" class="content-less-padding">
+							<span class="md-display-3">{{project.selectedProject.title}}</span>
+							<div layout="row" layout-align="start center">
+							<md-subheader>
+								<md-button class="md-icon-button colored-text" ng-href="mailto:email@hpe.com">
+									<i class="material-icons">email</i>
+								</md-button>
+							</md-subheader>
+								<span class="md-title">{{project.selectedProject.project_x0020_manager || "Automation Team"}}</span>
+							</div>
+						</div>
+						<div layout="column" class="content-less-padding">
+							<md-subheader>
+								<i class="material-icons colored-text">arrow_upward</i>
+								<span class="md-title">
+									{{project.selectedProject.estimated_x0020_fte_x0020_saving | number:2}}
+									{{project.selectedProject.job_x0020_level}}
+								</span>
+							</md-subheader>
+							<md-subheader>
+								<i class="material-icons colored-text">category</i>
+								<span class="md-title">
+									{{project.selectedProject.automation_x0020_category || "No Category Yet"}}
+								</span>
+							</md-subheader>
+							<md-subheader>
+								<i class="material-icons colored-text">star</i>
+								<span class="md-title">
+									{{project.selectedProject.rsat || "No Rating Yet" | number:2}}
+								</span>
+							</md-subheader>
+						</div>
+					</div>
+				</md-grid-tile-header>
+		</md-grid-list>
+	</div>
+
+	<div ng-controller="PricingCtrl as price" class="div-body" flex layout="column">
+		<md-grid-list
+		md-cols-xs="1" md-cols-sm="1" md-cols-md="1" md-cols-gt-md="1"
+		md-row-height-xs="1:2" md-row-height-sm="1:1" md-row-height-md="4:5" md-row-height-gt-md="2:1"
+		md-gutter="24px" md-gutter-gt-sm="16px"
+		layout-align="center center"
+		class="content-less-margin">
+			<md-grid-tile class="bordered-tile">
+				<md-grid-tile-header class="content-less-padding pricing-tile-header highlighted-tile">
+					<span class="md-display-1">Pricing</span>
+				</md-grid-tile-header>
+				<md-grid-tile-footer class="pricing-tile-footer">
+					<md-content flex layout="column">
+						<div class="content-less-padding" layout="column">
+							<md-subheader class="colored-text">Pricing Details</md-subheader>
+							<table class="content-more-width content-less-margin">
+								<tr>
+									<td></th>
+									<td>Small</td>
+									<td>Medium</td>
+									<td>Large</td>
+								</tr>
+								<tr ng-repeat="article in price.pricingDetails.pricingDescription">
+									<td>{{article.kind}}</td>
+									<td>{{article.small | currency:$:2}}</td>
+									<td>{{article.medium | currency:$:2}}</td>
+									<td>{{article.large | currency:$:2}}</td>
+								</tr>
+							</table>
+						</div>
+						<div class="content-less-padding" layout="column">
+							<md-subheader class="colored-text">Pricing Elements</md-subheader>
+							<ul ng-repeat="element in price.pricingDetails.pricingElements" class="no-margin">
+								<li>{{element}}</li>
+							</ul>	
+						</div>
+						<div class="content-less-padding" layout="column">
+							<md-subheader class="colored-text">Risks</md-subheader>
+							<ul ng-repeat="risk in price.pricingDetails.pricingRisks" class="no-margin">
+								<li>{{risk}}</li>
+							</ul>	
+						</div>
+						<div class="content-less-padding" layout="column">
+							<md-subheader class="colored-text">Other Considerations</md-subheader>
+							<ul ng-repeat="other in price.pricingDetails.pricingOthers" class="no-margin">
+								<li>{{other}}</li>
+							</ul>	
+						</div>
+					</md-content>
+				</md-grid-tile-footer>
+			</md-grid-tile>
+		</md-grid-list>
+	</div>
+
+</div>

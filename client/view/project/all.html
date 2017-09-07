@@ -1,0 +1,33 @@
+<div ng-controller="AllProjectsCtrl as project" layout="column">
+	<div class="div-header content-more-padding">
+		<span class="md-display-1 content-less-margin colored-text">All Projects</span>
+	</div>
+
+	<div class="div-body">
+		<md-grid-list md-cols-xs="2" md-cols-sm="3" md-cols-md="4" md-cols-gt-md="5"
+			md-row-height-gt-md="1:1" md-row-height="2:2"
+			md-gutter="42px">
+
+			<md-grid-tile ng-repeat="item in project.allProjects" class="bordered-tile">
+				<md-grid-tile-header class="content-less-padding project-tile-header highlighted-tile tile-background" layout-align="start start"
+					style="background-image:url('default_logo.png');">
+					<span class="md-title">{{item.title}}</span>
+				</md-grid-tile-header>
+				<md-button href="/#/project/{{item.title}}" layout-fill aria-label="a"></md-button>
+				<md-grid-tile-footer class="content-less-padding project-tile-footer" layout-align="end center">
+					<span class="md-subhead">
+						<i class="material-icons">star</i>
+						<span class="md-title">{{item.rsat | number:2}}</span>
+					</span>
+					<span class="md-subhead">
+						<i class="material-icons">arrow_upward</i>
+						<span class="md-title">{{item.estimated_x0020_fte_x0020_saving | number:2}} {{item.job_x0020_level}}</span>
+					</span>
+				</md-grid-tile-footer>
+			</md-grid-tile>
+		</md-grid-list>
+	</div>
+	<div class="div-footer content-more-padding">
+
+	</div>
+</div>

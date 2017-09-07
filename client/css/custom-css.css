@@ -1,0 +1,178 @@
+.highlighted-tile {
+  background: rgba(255, 255, 255, 0);
+  border:solid 8px rgb(0, 150, 136);
+  color:black;
+}
+.other-tile {
+  background: rgba(255, 255, 255, 0);
+  border:solid 8px rgb(94, 94, 94);
+  color:black;
+}
+
+.main-tile-header {
+  background: rgba(255, 255, 255, 0);
+  color:black;
+  height:100%;
+}
+
+.project-tile-header {
+  height:85%;
+}
+.project-tile-footer {
+  background: rgba(255, 255, 255, 0);
+  height:15%;
+  color:gray;
+}
+
+.summary-tile-header {
+  height:20%;
+}
+.summary-tile-footer {
+  background: rgba(255, 255, 255, 0);
+  height:80%;
+  color:black;
+}
+
+.case-tile-header {
+  height:70%;
+}
+.case-tile-footer {
+  background: rgba(255, 255, 255, 0);
+  height:30%;
+  color:gray;
+}
+
+.pricing-tile-header {
+  height:9%;
+}
+.pricing-tile-footer {
+  background: rgba(255, 255, 255, 0);
+  height:91%;
+  color:black;
+}
+
+.solid-tile-part {
+  background: rgb(0, 150, 136);
+  }
+
+.transparent-tile-part {
+  background: rgba(255, 255, 255, 0);
+  color:gray;
+}
+
+.content-more-padding {
+  padding: 1% 0;
+}
+
+.content-less-padding {
+  padding: 12px 12px;
+}
+
+.content-less-margin {
+  margin: 8px;
+}
+
+.no-margin {
+  margin: 0 0;
+}
+
+.bordered-tile {
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+  margin-top: 12px;
+}
+
+.tile-background {
+	background-repeat:no-repeat;
+	background-position: center;
+	background-size: 120px;
+}
+
+.wrapper{
+  padding: 0 10%;
+}
+
+.icon-right-margin{
+  margin-right: 5px;
+}
+
+.div-header{
+
+}
+
+.div-body{
+
+}
+
+.div-footer{
+
+}
+
+md-sidenav.bigger-width{
+   min-width: 800px;
+   width: 800px;
+}
+
+@font-face {
+    font-family: 'HPFont';
+    src: url('../HPSimplified_Lt.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+address, ul, ol, td {
+    font-weight: 600;
+}
+
+body{
+  font-family: 'HPFont', sans-serif;
+	font-weight: 400px;
+}
+
+.content-more-width{
+  width:40%;
+}
+
+.md-text{
+  font-size: 70%;
+	vertical-align:middle;
+}
+
+.md-title {
+  vertical-align:middle;
+}
+
+.material-icons {
+  vertical-align:middle;
+}
+
+.case-div{
+	margin-bottom : 5%;
+	margin-top : 15%;
+	height : 100%;
+}
+
+.colored-text{
+	color: rgb(0, 150, 136);
+}
+
+.left-most {
+	float : left;
+}
+
+.right-most {
+	float : right;
+}
+
+@media print {
+  .wrapper{
+    width:auto;
+    padding: 0 0;
+  }
+  md-grid-tile{
+    position:fixed;
+  }
+  md-grid-tile-header{
+    position:fixed;
+    overflow: visible;
+  }
+}
